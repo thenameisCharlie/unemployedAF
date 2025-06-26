@@ -19,4 +19,4 @@ git clone project
 ## Design
 Figma: https://www.figma.com/design/RZkZw4lgM2t2IUTrP9BLSk/UnemployedAF?node-id=0-1&t=LSBxaDN4iQHpPE5P-1 
 
-![image](https://github.com/user-attachments/assets/47b2cc0c-36bf-4fae-9a03-2036dc865647)
+![image](https://github.com/user-attachments/assets/f87fd3a3-63d0-49dd-94c6-5f826b7633b0)
