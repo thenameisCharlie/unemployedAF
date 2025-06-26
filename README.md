@@ -14,3 +14,7 @@ This project allows users to search for jobs across multiple public job sites su
 - Design: Figma
 
 ## Installation
+git clone project
+
+## Design
+Figma: https://www.figma.com/design/RZkZw4lgM2t2IUTrP9BLSk/UnemployedAF?node-id=0-1&t=LSBxaDN4iQHpPE5P-1 
