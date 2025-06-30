@@ -1,15 +1,22 @@
 <!-- HTML file for homepage -->
 
+<!-- action attribute goes to the route/url that triggers search_results() url_for() is a better option than just hardc oding "/search"-->
 <div class="search-bar-section">
-    <h2 id="slogan">Unemployed, not unmotivated.</h2>
-    <form class="search-bar" action="/pages/homepage.py" method="get">
-        <label for="job-title" class="sr-only">Job title</label>
-        <input type="text" id="job-title" name="job-title">
+  <h2 id="slogan">Unemployed, not unmotivated.</h2>
+  <form
+    class="search-bar"
+    action="{{url_for('joblistings_bp.search_results')}}"
+    method="get"
+  >
+    <label for="job-title" class="sr-only">Job title</label>
+    <input type="text" id="job-title" name="job-title" />
 
-        <label for="location" class="sr-only">Location</label>
-        <input type="text" id="location" name="location">
+    <label for="location" class="sr-only">Location</label>
+    <input type="text" id="location" name="location" />
 
-        <label for="job-site" class="sr-only">Job Site</label>
-        <input type="text" id="job-site" name="job-site">
-    </form>
-</div> 
+    <label for="job-site" class="sr-only">Job Site</label>
+    <input type="text" id="job-site" name="job-site" />
+
+    <button type="submit">Search</button>
+  </form>
+</div>
