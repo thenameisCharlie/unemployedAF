@@ -1,5 +1,11 @@
 from flask import Blueprint, render_template, request
+import requests
+from dotenv import load_dotenv
+import os #built in module that allows communication between the OS
+from pprint import pprint
 
+load_dotenv() #loads the .env file 
+API_KEY = os.getenv("API_KEY")
 
 jobListing_bp = Blueprint("joblistings", __name__)
 
@@ -20,6 +26,23 @@ def search_results():
     params = {"query": query}
 
     headers = {"x-rapidapi-key": API_KEY, "x-rapidapi-host": "jsearch.p.rapidapi.com"}
+
+    response = requests.get( url, headers=headers, params=params) #Request the data from the API
+
+    returned_data = response.json() #return the JSON data from the API
+
+    # print(f"Json data: {returned_data}")
+    pprint(returned_data["data"])
+
+    return render_template("joblistings.html", jobs = returned_data["data"]) #HTML file where the data is going and variable that obtains values from the "data" list
+
+
+
+
+
+
+
+
 
 
 
