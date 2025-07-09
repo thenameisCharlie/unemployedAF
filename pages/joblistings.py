@@ -14,20 +14,20 @@ jobListing_bp = Blueprint("joblistings", __name__)
 def search_results():
 
     #Reads the data from the html form the user sends the backend
-    title = request.args.get("title", "all")
+    title = request.args.get("job-title", "all")
     location = request.args.get("location", "all")
-    site = request.args.get("site", "all")
+    site = request.args.get("job-site", "all")
 
     #Sends request from backend to another server
     query = f"{title} jobs in {location} via {site}"
 
     url = "https://jsearch.p.rapidapi.com/search"
 
-    params = {"query": query}
+    params = {"query": query, "page": 1, "num_pages": 1, "country": "us", "date_posted": "all"}
 
     headers = {"x-rapidapi-key": API_KEY, "x-rapidapi-host": "jsearch.p.rapidapi.com"}
 
-    response = requests.get( url, headers=headers, params=params) #Request the data from the API
+    response = requests.get( url, params=params, headers=headers) #Request the data from the API
 
     returned_data = response.json() #return the JSON data from the API
 
