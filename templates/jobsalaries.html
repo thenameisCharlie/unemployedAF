@@ -1,1 +1,29 @@
 #HTML file for jobsalaries page
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job listings page</title>
+  </head>
+  <body>
+    <div class="job-salary-search">
+      <h2>Get paid what you're worth. Check your career salary</h2>
+      <form
+        class="salary-search-bar"
+        action="{{url_for(jobsalaries.job_salary)}}"
+        method="get"
+      >
+        <label for="salary-job-title" class="job-salary-search-bar"
+          >Job title</label
+        >
+        <input type="text" id="salary-job-title" name="salary-job-title" />
+
+        <label for="salary-location" class="job-salary-search-bar">Where</label>
+        <input type="text" id="salary-location" name="salary-location" />
+
+        <button type="submit">Search</button>
+      </form>
+    </div>
+  </body>
+</html>

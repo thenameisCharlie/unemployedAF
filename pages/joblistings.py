@@ -14,7 +14,7 @@ jobListing_bp = Blueprint("joblistings", __name__)
 def search_results():
 
     #Reads the data from the html form the user sends the backend
-    title = request.args.get("job-title", "all")
+    title = request.args.get("home-job-title", "all")
     location = request.args.get("location", "all")
     site = request.args.get("job-site", "all")
 
