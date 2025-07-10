@@ -1,1 +1,17 @@
-#HTML file for joblistings page
+<!-- HTML file for joblistings page -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job listings page</title>
+  </head>
+  <body>
+    {% for job in jobs %}
+    <h4>{{job.employer_name}}</h4>
+    <img src="{{job.employer_logo}}" alt=" " />
+    <h2>{{job.job_title}}</h2>
+    {% endfor %}
+    <p>This is my first HTML page.</p>
+  </body>
+</html>
