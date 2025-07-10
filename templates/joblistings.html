@@ -9,7 +9,9 @@
   <body>
     {% for job in jobs %}
     <h4>{{job.employer_name}}</h4>
-    <img src="{{job.employer_logo}}" alt=" " />
+    <p>{{job.job_location}}</p>
+    <p>{{job.job_posted_at}}</p>
+    <img src="{{job.employer_logo}}" alt="" />
     <h2>{{job.job_title}}</h2>
     {% endfor %}
     <p>This is my first HTML page.</p>
