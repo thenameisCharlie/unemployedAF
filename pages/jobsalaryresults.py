@@ -7,20 +7,21 @@ from pprint import pprint
 load_dotenv() #loads the .env file 
 API_KEY = os.getenv("API_KEY")
 
-jobsalaries_bp = Blueprint("jobsalaries", __name__)
+jobsalaryresults_bp = Blueprint("jobsalaryresults", __name__)
 
-@jobsalaries_bp.route("/jobsalaries")
-def job_salary():
+@jobsalaryresults_bp.route("/jobsalaryresults")
+def job_salary_results():
 
-    #Reads the data from the html form the user sends the backend
+    #Reads the data from the html form that the user sends the backend
     salary_job_title = request.args.get("salary-job-title")
     salary_location = request.args.get("salary-location")
 
+    #Sends request from backend to another server
     url = "https://jsearch.p.rapidapi.com/estimated-salary"
 
-    params = {"job_title": salary_job_title, "location": salary_location}
+    params = {"job_title": salary_job_title, "location": salary_location} 
 
-    headers = {"x-rapidapi-key": API_KEY, "x-rapidapi-host": "jsearch.p.rapidapi.com"}
+    headers = {"x-rapidapi-key": API_KEY, "x-rapidapi-host": "jsearch.p.rapidapi.com"} #Data required for the server to recognize the user
 
     response = requests.get(url, params=params, headers=headers) #response from the server with data
 
@@ -28,7 +29,7 @@ def job_salary():
 
     pprint(data)
 
-    return render_template("jobsalaries.html", salaries = data["data"]) #renders the html file with
+    return render_template("jobsalaryresults.html", salaries = data["data"]) #renders the html file and returns the value of the "data" key
 
     
 

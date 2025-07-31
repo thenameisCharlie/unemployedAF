@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Job listings page</title>
   </head>
+
+  {%include "components/navbar.html" %}
+
   <body>
     {% for job in jobs %}
     <h4>{{job.employer_name}}</h4>

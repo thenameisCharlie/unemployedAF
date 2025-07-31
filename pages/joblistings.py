@@ -5,7 +5,7 @@ import os #built in module that allows communication between the OS
 from pprint import pprint
 
 load_dotenv() #loads the .env file 
-API_KEY = os.getenv("API_KEY")
+API_KEY = os.getenv("API_KEY") 
 
 jobListing_bp = Blueprint("joblistings", __name__)
 
@@ -19,7 +19,7 @@ def search_results():
     site = request.args.get("job-site", "all")
 
     #Sends request from backend to another server
-    query = f"{title} jobs in {location} via {site}"
+    query = f"{title} jobs in {location} via {site}" #query was created as a sentence since that's how you make the request to the server (doesn't have separate params)
 
     url = "https://jsearch.p.rapidapi.com/search"
 
@@ -31,10 +31,9 @@ def search_results():
 
     returned_data = response.json() #return the JSON data from the API
 
-    # print(f"Json data: {returned_data}")
     pprint(returned_data["data"])
 
-    return render_template("joblistings.html", jobs = returned_data["data"]) #HTML file where the data is going and variable that obtains values from the "data" list
+    return render_template("joblistings.html", jobs = returned_data["data"]) #HTML file where the data is going and returning the value of the "data" key and assigning it to jobs
 
 
 
