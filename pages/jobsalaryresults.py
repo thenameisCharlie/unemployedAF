@@ -3,37 +3,42 @@ import requests
 from dotenv import load_dotenv
 import os #built in module that allows communication between the OS
 from pprint import pprint
+import pandas as pd
 
-load_dotenv() #loads the .env file 
-API_KEY = os.getenv("API_KEY")
+# load_dotenv() #loads the .env file 
+# API_KEY = os.getenv("API_KEY")
 
 jobsalaryresults_bp = Blueprint("jobsalaryresults", __name__)
 
 @jobsalaryresults_bp.route("/jobsalaryresults")
 def job_salary_results():
+    df = pd.read_excel("data/wages_data_by_state.xlsx") #read the excel file 
+    job_wages = df.to_dict(orient="records") #turns the table into a list of dicts and making it one dict per row (orient="records")
 
-    #Reads the data from the html form that the user sends the backend
-    salary_job_title = request.args.get("salary-job-title")
-    salary_location = request.args.get("salary-location")
-
-    #Sends request from backend to another server
-    url = "https://jsearch.p.rapidapi.com/estimated-salary"
-
-    params = {"job_title": salary_job_title, "location": salary_location} 
-
-    headers = {"x-rapidapi-key": API_KEY, "x-rapidapi-host": "jsearch.p.rapidapi.com"} #Data required for the server to recognize the user
-
-    response = requests.get(url, params=params, headers=headers) #response from the server with data
-
-    data = response.json() #converts data to json
-
-    pprint(data)
-
-    return render_template("jobsalaryresults.html", salaries = data["data"]) #renders the html file and returns the value of the "data" key
-
-    
-
-    
+    return render_template("jobsalaryresults.html", job_wages=job_wages) #render the html file, left variable: name the html template will use, right variable: python variable
 
 
-    
+
+
+
+
+# def job_salary_results():
+
+#     #Reads the data from the html form that the user sends the backend
+#     salary_job_title = request.args.get("salary-job-title")
+#     salary_location = request.args.get("salary-location")
+
+#     #Sends request from backend to another server
+#     url = "https://jsearch.p.rapidapi.com/estimated-salary"
+
+#     params = {"job_title": salary_job_title, "location": salary_location} 
+
+#     headers = {"x-rapidapi-key": API_KEY, "x-rapidapi-host": "jsearch.p.rapidapi.com"} #Data required for the server to recognize the user
+
+#     response = requests.get(url, params=params, headers=headers) #response from the server with data
+
+#     data = response.json() #converts data to json
+
+#     pprint(data)
+
+#     return render_template("jobsalaryresults.html", salaries = data["data"]) #renders the html file and returns the value of the "data" key700
