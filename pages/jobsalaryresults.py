@@ -26,6 +26,14 @@ def job_salary_results():
     #render the html file, left variable: name the html template will use, right variable: python variable
     return render_template("jobsalaryresults.html", job_wages=job_wages) 
 
+    
+
+
+
+
+# df = pd.read_excel("data/wages_data_by_state.xlsx") #read the excel file 
+#     job_wages = df.to_dict(orient="records") #turns the table into a list of dicts and making it one dict per row (orient="records")
+
 
 # def job_salary_results():
 
