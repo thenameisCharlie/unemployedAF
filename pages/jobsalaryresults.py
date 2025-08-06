@@ -19,7 +19,7 @@ def job_salary_results():
     
     #turns the table into a list of dicts and making it one dict per row (orient="records")
     #Note [[]] is for the DataFrame and [] is for a Series which doesn't work with .to_dict()
-    job_wages = filtered_data[["OCC_TITLE", "AREA_NAME"]].to_dict(orient="records") 
+    job_wages = filtered_data[["OCC_TITLE", "AREA_TITLE", "H_MEAN", "A_MEAN", "H_PCT10", "H_PCT90", "A_PCT10", "A_PCT90"]].to_dict(orient="records") 
 
     #render the html file, left variable: name the html template will use, right variable: python variable
     return render_template("jobsalaryresults.html", job_wages=job_wages) 
