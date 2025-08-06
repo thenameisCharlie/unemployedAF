@@ -1,25 +1,28 @@
 from flask import Blueprint, request, render_template
-import requests
-from dotenv import load_dotenv
-import os #built in module that allows communication between the OS
-from pprint import pprint
 import pandas as pd
-
-# load_dotenv() #loads the .env file 
-# API_KEY = os.getenv("API_KEY")
 
 jobsalaryresults_bp = Blueprint("jobsalaryresults", __name__)
 
 @jobsalaryresults_bp.route("/jobsalaryresults")
 def job_salary_results():
+
+    #Reads the data from the html form that the user sends the backend
+    job_title = request.args.get("job-salary-title", "").strip()
+    job_location = request.args.get("job-salary-location", "").strip()
+    
     df = pd.read_excel("data/wages_data_by_state.xlsx") #read the excel file 
-    job_wages = df.to_dict(orient="records") #turns the table into a list of dicts and making it one dict per row (orient="records")
 
-    return render_template("jobsalaryresults.html", job_wages=job_wages) #render the html file, left variable: name the html template will use, right variable: python variable
+    #Filter rows in the OCC_TITLE column by the job title that the user sends in the HTML form (case insensitve)
+    #This line of code is saying "Give me the rows where the OCC_TITLE column matches what I’m looking for."(data in job_title)
+    filtered_data = df[df["OCC_TITLE"].str.contains(job_title, case=False, na=False) &
+                        df["AREA_TITLE"].str.contains(job_location, case=False, na=False)]
+    
+    #turns the table into a list of dicts and making it one dict per row (orient="records")
+    #Note [[]] is for the DataFrame and [] is for a Series which doesn't work with .to_dict()
+    job_wages = filtered_data[["OCC_TITLE", "AREA_NAME"]].to_dict(orient="records") 
 
-
-
-
+    #render the html file, left variable: name the html template will use, right variable: python variable
+    return render_template("jobsalaryresults.html", job_wages=job_wages) 
 
 
 # def job_salary_results():
