@@ -25,3 +25,5 @@ def job_salary_results():
 
     #render the html file, left variable: name the html template will use, right variable: python variable
     return render_template("jobsalaryresults.html", job_wages=job_wages)
+
+#Note add Exception handling 
