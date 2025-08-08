@@ -12,7 +12,9 @@
     {%if job_wages%} {%for job_wage in job_wages %}
     <h2 class="job-title">{{job_wage.OCC_TITLE}}</h2>
     {% endfor %} {%else%}
-    <p>No results found. Try another job title or location</p>
+    <p class="no-results-found">
+      No results found. Try another job title or location
+    </p>
     {%endif%}
   </body>
 </html>
