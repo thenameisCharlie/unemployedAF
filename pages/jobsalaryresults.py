@@ -24,34 +24,4 @@ def job_salary_results():
     print(job_wages)
 
     #render the html file, left variable: name the html template will use, right variable: python variable
-    return render_template("jobsalaryresults.html", job_wages=job_wages) 
-
-    
-
-
-
-
-# df = pd.read_excel("data/wages_data_by_state.xlsx") #read the excel file 
-#     job_wages = df.to_dict(orient="records") #turns the table into a list of dicts and making it one dict per row (orient="records")
-
-
-# def job_salary_results():
-
-#     #Reads the data from the html form that the user sends the backend
-#     salary_job_title = request.args.get("salary-job-title")
-#     salary_location = request.args.get("salary-location")
-
-#     #Sends request from backend to another server
-#     url = "https://jsearch.p.rapidapi.com/estimated-salary"
-
-#     params = {"job_title": salary_job_title, "location": salary_location} 
-
-#     headers = {"x-rapidapi-key": API_KEY, "x-rapidapi-host": "jsearch.p.rapidapi.com"} #Data required for the server to recognize the user
-
-#     response = requests.get(url, params=params, headers=headers) #response from the server with data
-
-#     data = response.json() #converts data to json
-
-#     pprint(data)
-
-#     return render_template("jobsalaryresults.html", salaries = data["data"]) #renders the html file and returns the value of the "data" key700
+    return render_template("jobsalaryresults.html", job_wages=job_wages)

@@ -9,8 +9,10 @@
   {%include "components/navbar.html"%}
 
   <body>
-    {%for job_wage in job_wages %}
+    {%if job_wages%} {%for job_wage in job_wages %}
     <h2 class="job-title">{{job_wage.OCC_TITLE}}</h2>
-    {% endfor %}
+    {% endfor %} {%else%}
+    <p>No results found. Try another job title or location</p>
+    {%endif%}
   </body>
 </html>
