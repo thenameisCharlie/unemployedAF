@@ -10,7 +10,9 @@
 
   <body>
     <div class="job-salary-search">
-      <h2>Get paid what you're worth. Check your career salary</h2>
+      <h2 class="salary-slogan">
+        Get paid what you're worth. Check your career salary
+      </h2>
       <form
         class="salary-search-bar"
         action="{{url_for('jobsalaryresults.job_salary_results')}}"
@@ -32,6 +34,9 @@
 
         <button type="submit">Search</button>
       </form>
+    </div>
+    <div class="display-top-paying-careers">
+      <h3 class="top-careers">Top paying careers</h3>
     </div>
   </body>
 </html>
