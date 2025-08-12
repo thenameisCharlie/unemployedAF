@@ -12,8 +12,8 @@ def job_salary_results():
     
     df = pd.read_excel("data/wages_data_by_state.xlsx") #read the excel file 
 
-    #Filter rows in the OCC_TITLE column by the job title that the user sends in the HTML form (case insensitve)
-    #This line of code is saying "Give me the rows where the OCC_TITLE column matches what I’m looking for."(data in job_title)
+    #Filter DataFrame to rows that match the OCC_TITLE column by the job title that the user sends in the HTML form (case insensitve)
+    #This line of code is saying "Give me the rows where the OCC_TITLE column matches what I’m looking for."(data in job_title/job_location)
     filtered_data = df[df["OCC_TITLE"].str.contains(job_title, case=False, na=False) &
                         df["AREA_TITLE"].str.contains(job_location, case=False, na=False)]
     
