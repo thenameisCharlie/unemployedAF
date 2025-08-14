@@ -37,6 +37,12 @@
     </div>
     <div class="display-top-paying-careers">
       <h3 class="top-careers">Top paying careers</h3>
+      <div class="top-career-details">
+        {%for top_wage in top_wages%}
+        <p id="top-salary-title">{{top_wage.OCC_TITLE}}</p>
+        <p id="top-salary-annually">{{top_wage.A_MEAN}}</p>
+        {%endfor%}
+      </div>
     </div>
   </body>
 </html>
