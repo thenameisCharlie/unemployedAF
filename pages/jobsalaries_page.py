@@ -9,9 +9,14 @@ def job_salaries():
     #Read the excel sheet
     df = pd.read_excel("data/wages_data_by_state.xlsx")
     
+    #converts the column to numeric values and coerce is to ensure no NaN results crashes the code
+    df["A_MEAN"] = pd.to_numeric(df["A_MEAN"], errors="coerce")
+
     #Used a mask to turn the list/Series of True/False. Keep the rows that meet the condition (True)
     #This still returns all the filtered columns where the rows meet the condition
-    top_wages_data = df[df["A_MEAN"] > 100000]
+    top_wages_data = df[df["A_MEAN"] > 250000]
+
+    print(df["A_MEAN"].dtype) 
 
     #Narrows the DataFrame to just the columns that are needed
     top_wages = top_wages_data[["OCC_TITLE","A_MEAN"]].to_dict(orient="records")
