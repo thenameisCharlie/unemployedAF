@@ -40,7 +40,9 @@
       <div class="top-career-details">
         {%for top_wage in top_wages%}
         <p id="top-salary-title">{{top_wage.OCC_TITLE}}</p>
-        <p id="top-salary-annually">{{top_wage.A_MEAN}}</p>
+        <p id="top-salary-annually">
+          ${{"{:,.0f}".format(top_wage.A_MEAN)}} per year
+        </p>
         {%endfor%}
       </div>
     </div>

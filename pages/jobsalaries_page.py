@@ -9,17 +9,18 @@ def job_salaries():
     #Read the excel sheet
     df = pd.read_excel("data/wages_data_by_state.xlsx")
     
-    #converts the column to numeric values and coerce is to ensure no NaN results crashes the code
+    #converts the column to numeric values and coerce is to ensure no NaN results crashes the code.
     df["A_MEAN"] = pd.to_numeric(df["A_MEAN"], errors="coerce")
 
     #Used a mask to turn the list/Series of True/False. Keep the rows that meet the condition (True)
     #This still returns all the filtered columns where the rows meet the condition
     top_wages_data = df[df["A_MEAN"] > 150000]
 
+
     #Retruns 6 rows of the DataFrame and randomizes them 
     randomized_top_wages = top_wages_data.sample(n=6, random_state=None)
 
-    #Narrows the DataFrame to just the columns that are needed
+    #Narrows the DataFrame to just the columns that are needed for display
     top_wages = randomized_top_wages[["OCC_TITLE","A_MEAN"]].to_dict(orient="records")
 
     return render_template("jobsalaries_page.html", top_wages=top_wages)
