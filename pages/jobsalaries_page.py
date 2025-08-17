@@ -16,8 +16,6 @@ def job_salaries():
     #This still returns all the filtered columns where the rows meet the condition
     top_wages_data = df[df["A_MEAN"] > 250000]
 
-    print(df["A_MEAN"].dtype) 
-
     #Narrows the DataFrame to just the columns that are needed
     top_wages = top_wages_data[["OCC_TITLE","A_MEAN"]].to_dict(orient="records")
 
