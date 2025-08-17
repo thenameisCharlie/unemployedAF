@@ -18,16 +18,16 @@
 
     <div class="wage-values-card">
       <p>
-        Average base salary {% if job_wage.A_MEAN
-        %}${{"{:,.0f}".format(job_wage.A_MEAN)}}{% else %}N/A{% endif %}
+        Average base salary {% if job_wage.A_MEAN is number %}
+        ${{"{:,.0f}".format(job_wage.A_MEAN)}}{% else %}N/A{% endif %}
       </p>
       <p>
-        Low {% if job_wage.A_PCT10 %}${{"{:,.0f}".format(job_wage.A_PCT10)}}{%
-        else %}N/A{% endif %}
+        Low {% if job_wage.A_PCT10 is number %}
+        ${{"{:,.0f}".format(job_wage.A_PCT10)}}{% else %}N/A{% endif %}
       </p>
       <p>
-        High{% if job_wage.A_PCT90 %} ${{"{:,.0f}".format(job_wage.A_PCT90)}}{%
-        else %}N/A{% endif %}
+        High{% if job_wage.A_PCT90 is number
+        %}${{"{:,.0f}".format(job_wage.A_PCT90)}}{% else %}N/A{% endif %}
       </p>
     </div>
     {% endfor %} {%else%}
