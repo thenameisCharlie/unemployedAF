@@ -21,8 +21,6 @@ def job_salary_results():
     #Note [[]] is for the DataFrame and [] is for a Series which doesn't work with .to_dict()
     job_wages = filtered_data[["OCC_TITLE", "AREA_TITLE", "H_MEAN", "A_MEAN", "H_PCT10", "H_PCT90", "A_PCT10", "A_PCT90"]].to_dict(orient="records") 
 
-    print(job_wages)
-
     #render the html file, left variable: name the html template will use, right variable: python variable
     return render_template("jobsalaryresults.html", job_wages=job_wages)
 

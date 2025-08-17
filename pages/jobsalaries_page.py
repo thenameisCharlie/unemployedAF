@@ -16,7 +16,6 @@ def job_salaries():
     #This still returns all the filtered columns where the rows meet the condition
     top_wages_data = df[df["A_MEAN"] > 150000]
 
-
     #Retruns 6 rows of the DataFrame and randomizes them 
     randomized_top_wages = top_wages_data.sample(n=6, random_state=None)
 
