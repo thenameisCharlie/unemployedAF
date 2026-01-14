@@ -17,6 +17,7 @@ This project allows users to search for jobs across multiple public job sites su
 git clone project
 
 ## Design
-Figma: https://www.figma.com/design/RZkZw4lgM2t2IUTrP9BLSk/UnemployedAF?node-id=0-1&t=LSBxaDN4iQHpPE5P-1 
+Figma: https://www.figma.com/proto/RZkZw4lgM2t2IUTrP9BLSk/JobNest?node-id=0-1&t=jGOYwOuWz3FjWC4x-1 
 
-![image](https://github.com/user-attachments/assets/f87fd3a3-63d0-49dd-94c6-5f826b7633b0)
+<img width="804" height="571" alt="image" src="https://github.com/user-attachments/assets/8926d9e6-108e-4e95-b338-a2ce3040228e" />
+
