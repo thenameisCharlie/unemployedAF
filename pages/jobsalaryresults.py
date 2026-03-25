@@ -6,7 +6,7 @@ jobsalaryresults_bp = Blueprint("jobsalaryresults", __name__)
 @jobsalaryresults_bp.route("/jobsalaryresults")
 def job_salary_results():
 
-    #Reads the data from the html form that the user sends the backend
+    #Reads the data from the jobsalaries_page html form that the user sends the backend
     job_title = request.args.get("job-salary-title", "").strip()
     job_location = request.args.get("job-salary-location", "").strip()
     
