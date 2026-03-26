@@ -27,9 +27,12 @@ def search_results():
 
     headers = {"x-rapidapi-key": API_KEY, "x-rapidapi-host": "jsearch.p.rapidapi.com"}
 
-    response = requests.get( url, params=params, headers=headers) #Request the data from the API
+    try:
+        response = requests.get( url, params=params, headers=headers) #Request the data from the API
+        returned_data = response.json() #return the JSON data from the API
 
-    returned_data = response.json() #return the JSON data from the API
+    except requests.exceptions.HTTPError as e:
+        print(f"HTTP error occurred: {e}")
 
     pprint(returned_data["data"])
 
