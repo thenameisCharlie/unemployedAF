@@ -1,0 +1,22 @@
+/* Navbar */
+nav {
+  display: flex; /*arranges the children (<a/>) in the parent (<nav/>) in a row */
+  gap: 2rem; /*creates an even gap between the navbar options*/
+}
+
+/*Navbar HTML anchors*/
+nav a {
+  text-decoration: none; /*removes text underline*/
+  color: black; /*text color*/
+  transition: color 0.3s; /*transition hover color between text color*/
+}
+
+nav a:hover {
+  color: #b13333; /*color switch after hovering over text*/
+}
+
+/*Adjacent sibling selector (target any <a> that comes directly after another <a>)*/
+nav a + a {
+  border-left: 1px solid #b13333; /*adding a border to the left of an <a> that comes after another <a>*/
+  padding-left: 2rem;
+}
