@@ -1,10 +1,11 @@
 /* Navbar */
 nav {
   border-bottom: 1px solid #b13333;
+  padding: 0.2rem;
 }
 
 nav img {
-  height: 60px; /* Manually adjust the height of the image */
+  height: 40px; /* Manually adjust the height of the image */
   width: auto; /* automatically adjusts the image proportionally to the height adjusted (Avoids squishing image) */
 }
 
