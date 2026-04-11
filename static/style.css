@@ -19,21 +19,13 @@ nav img {
 
 /*  child combinator (>) Targets ONLY <a> tags that are DIRECT children (logo link ONLY) */
 .inner-container > a {
-  flex: 1; /* Ratio that tells each child how much of the leftover space to claim compared to its siblings (1 is equal share) */
   justify-content: flex-start; /* pushes the logo image to the left of its lane */
 }
 
 .nav-links {
   display: flex; /*arranges the children (<a/>) in the parent (inner-container <div>) in a row */
-  justify-content: center; /* links stay centered */
   gap: 2rem; /* creates an even gap between the links <a> */
-  flex: 1; /* Ratio that tells each child how much of the leftover space to claim compared to its siblings (1 is equal share) */
-}
-
-/* invisible balancer on the right */
-/* the last direct child inside of .inner-container (empty div) */
-.inner-container > div:last-child {
-  flex: 1; /* Ratio that tells each child how much of the leftover space to claim compared to its siblings (1 is equal share) */
+  margin-left: 2rem; /* Give only 2rems of space from the left of the content to stay close to whatever is on the left (Logo) */
 }
 
 /*Navbar Text Design*/
