@@ -1,6 +1,6 @@
 /* Navbar */
 nav {
-  border-bottom: 1px solid #b13333;
+  border-bottom: 1px solid rgba(177, 51, 51, 0.2);
   padding: 0.2rem;
 }
 
@@ -14,7 +14,7 @@ nav img {
   display: flex; /*arranges the children (<a/>) in the parent (inner-container <div>) in a row */
   align-items: center; /* Aligns all the children along the middle of the row (Avoids the links from moving to the top since the logo is larger)*/
   width: 100%; /* Standard for centering content width*/
-  padding: 1rem 2rem; /*creates space for the content from the border. first rem top and bottom second rem left and right*/
+  padding: 0.5rem 0.5rem; /*creates space for the content from the border. first rem top and bottom second rem left and right*/
 }
 
 /*  child combinator (>) Targets ONLY <a> tags that are DIRECT children (logo link ONLY) */
@@ -33,8 +33,9 @@ nav a {
   text-decoration: none; /*removes text underline*/
   color: black; /*text color*/
   transition: color 0.3s; /*transition hover color between text color*/
-  font-family: "Poppins", sans-serif;
-  font-size: 0.95rem;
+  font-family:
+    "Poppins", sans-serif; /*Google font chosen. If font fails it defaults to sans-serif*/
+  font-size: 0.85rem;
 }
 
 nav a:hover {
@@ -43,6 +44,11 @@ nav a:hover {
 
 /*Adjacent sibling selector (target any <a> that comes directly after another <a>)*/
 nav a + a {
-  border-left: 1px solid #b13333; /*adding a border to the left of an <a> that comes after another <a>*/
+  border-left: 1px solid rgba(177, 51, 51, 0.2); /*adding a border to the left of an <a> that comes after another <a>*/
   padding-left: 1rem; /*adds padding to the left of the content (<a>) */
+}
+
+/*Homepage*/
+body {
+  background-color: #f4f3f2;
 }

@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="static/style.css" />
   </head>
 
-  {%include "components/navbar.html" %}
-
   <body>
+    {%include "components/navbar.html" %}
+
     <div class="search-bar-section">
       <h2 id="slogan">Unemployed, not unmotivated.</h2>
       <form
@@ -19,14 +19,29 @@
         action="{{url_for('joblistings.search_results')}}"
         method="get"
       >
-        <label for="home-job-title" class="sr-only">Job title</label>
-        <input type="text" id="home-job-title" name="home-job-title" />
+        <label for="home-job-title" class="sr-only"></label>
+        <input
+          type="text"
+          id="home-job-title"
+          name="home-job-title"
+          placeholder="Search jobs, keywords"
+        />
 
-        <label for="location" class="sr-only">Location</label>
-        <input type="text" id="location" name="location" />
+        <label for="location" class="sr-only"></label>
+        <input
+          type="text"
+          id="location"
+          name="location"
+          placeholder="City, State, Zip code or Remote"
+        />
 
-        <label for="job-site" class="sr-only">Job Site</label>
-        <input type="text" id="job-site" name="job-site" />
+        <label for="job-site" class="sr-only"></label>
+        <input
+          type="text"
+          id="job-site"
+          name="job-site"
+          placeholder="Job site"
+        />
 
         <button type="submit">Search</button>
       </form>
