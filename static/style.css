@@ -52,3 +52,27 @@ nav a + a {
 body {
   background-color: #f4f3f2;
 }
+
+.search-bar {
+  display: flex;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 15px;
+  max-width: 600px; /*Sets a ceiling on how wide an element (search bar) can grow */
+  margin: 0 auto; /*Centers the search bar to the middle of the page by consuming equal margin space on both sides */
+  padding: 0.75rem 1rem;
+}
+
+.search-bar input {
+  border: none;
+}
+
+.search-bar input + input {
+  border-left: 1px solid lightgray;
+  padding-left: 1rem;
+}
+
+.search-bar button {
+  background-color: #b13333;
+  color: white;
+}
