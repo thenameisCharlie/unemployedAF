@@ -53,6 +53,10 @@ body {
   background-color: #f4f3f2;
 }
 
+.search-bar-section {
+  padding-top: 5rem; /*Adds space between the navbar and the slogan and search bar*/
+}
+
 .search-bar {
   display: flex; /*arranges the children (<input/>) in the parent (form) in a row  */
   background-color: white; /*background color change */
@@ -80,11 +84,18 @@ body {
 .search-bar button {
   background-color: #b13333; /*Changes the color of the button background */
   color: white; /*Changes the color of the button text */
-  padding: 0.75rem 1.25rem; /* Padding around the "search" and to match the the height of input padding */
+  flex-shrink: 0; /* Preventative in case smaller screens squeeze the button */
+  padding: 0.75rem 1.5rem; /* Padding around the "search" and to match the the height of input padding */
+  font-size: 1.2rem;
   border: none; /* Removes the borders from the button */
   cursor: pointer; /* Turns the mouse into a hand when it hovers the button */
 }
 
-.search-bar-section {
-  padding-top: 5rem; /*Adds space between the navbar and the slogan and search bar*/
+#slogan {
+  color: #b13333;
+  text-align: center;
+}
+
+.slogan-word-two {
+  color: #da9101;
 }

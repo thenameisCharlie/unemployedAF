@@ -7,13 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Homepage</title>
     <link rel="stylesheet" href="static/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
 
   <body>
     {%include "components/navbar.html" %}
 
     <div class="search-bar-section">
-      <h2 id="slogan">Unemployed, not unmotivated.</h2>
+      <h2 id="slogan">
+        Unemployed, not <span class="slogan-word-two">unmotivated.</span>
+      </h2>
       <form
         class="search-bar"
         action="{{url_for('joblistings.search_results')}}"
@@ -40,7 +46,9 @@
           placeholder="Job site"
         />
 
-        <button type="submit">Search</button>
+        <button type="submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
       </form>
     </div>
   </body>
