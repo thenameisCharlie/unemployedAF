@@ -35,7 +35,7 @@ nav a {
   transition: color 0.3s; /*transition hover color between text color*/
   font-family:
     "Poppins", sans-serif; /*Google font chosen. If font fails it defaults to sans-serif*/
-  font-size: 0.85rem;
+  font-size: 0.9rem;
 }
 
 nav a:hover {
@@ -54,7 +54,7 @@ body {
 }
 
 .search-bar-section {
-  padding-top: 5rem; /*Adds space between the navbar and the slogan and search bar*/
+  padding-top: 8rem; /*Adds space between the navbar and the slogan and search bar*/
 }
 
 .search-bar {
@@ -71,7 +71,7 @@ body {
   border: none; /*Removes the borders around the inputs in the search-bar container */
   flex: 1; /*Divides the space evenly between the input children */
   padding: 1.5rem 1rem; /* Padding creates comfortable space around the text user type */
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-family:
     "Poppins", sans-serif; /*Google font chosen. If font fails it defaults to sans-serif*/
 }
@@ -93,7 +93,10 @@ body {
 
 #slogan {
   color: #b13333;
+  font-size: 1.85rem;
   text-align: center;
+  font-family:
+    "Poppins", sans-serif; /*Google font chosen. If font fails it defaults to sans-serif*/
 }
 
 .slogan-word-two {
