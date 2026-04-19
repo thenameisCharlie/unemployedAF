@@ -16,7 +16,7 @@ This project allows users to search for jobs across multiple public job sites su
 ## Installation
 git clone project
 
-## Webpage
+## Webpages
 
 
 
