@@ -16,8 +16,7 @@ This project allows users to search for jobs across multiple public job sites su
 ## Installation
 git clone project
 
-## Design
-Figma: https://www.figma.com/proto/RZkZw4lgM2t2IUTrP9BLSk/JobNest?node-id=0-1&t=jGOYwOuWz3FjWC4x-1 
+## Webpages
 
-<img width="804" height="571" alt="image" src="https://github.com/user-attachments/assets/8926d9e6-108e-4e95-b338-a2ce3040228e" />
+
 
