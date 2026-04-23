@@ -7,15 +7,14 @@
     <title>Job listings page</title>
   </head>
 
-  {%include "components/navbar.html"%}
-
   <body>
-    {% for job in jobs %}
+    {%include "components/navbar.html"%} {% for job in jobs %}
+    <h2>{{job.job_title}}</h2>
     <h4>{{job.employer_name}}</h4>
+    <img src="{{job.employer_logo}}" alt="Company logo" />
     <p>{{job.job_location}}</p>
     <p>{{job.job_posted_at}}</p>
-    <img src="{{job.employer_logo}}" alt="" />
-    <h2>{{job.job_title}}</h2>
+    <p>{{job.job_publisher}}</p>
     {% endfor %}
   </body>
 </html>
