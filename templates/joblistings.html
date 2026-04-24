@@ -22,13 +22,46 @@
   </head>
 
   <body>
-    {%include "components/navbar.html"%} {% for job in jobs %}
-    <h2>{{job.job_title}}</h2>
-    <h4>{{job.employer_name}}</h4>
-    <img src="{{job.employer_logo}}" alt="Company logo" />
-    <p>{{job.job_location}}</p>
-    <p>{{job.job_posted_at}}</p>
-    <p>{{job.job_publisher}}</p>
-    {% endfor %}
+    {%include "components/navbar.html"%}
+    <form
+      class="job-results-search-bar"
+      action="{{url_for('joblistings.search_results')}}"
+      method="get"
+    >
+      <input
+        type="text"
+        id="home-job-title"
+        name="home-job-title"
+        value="{{ request.args.get('home-job-title', '') }}"
+      />
+
+      <input
+        type="text"
+        id="location"
+        name="location"
+        value="{{ request.args.get('location', '') }}"
+      />
+
+      <input
+        type="text"
+        id="job-site"
+        name="job-site"
+        value="{{ request.args.get('job-site', '') }}"
+      />
+
+      <button type="submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
+    <div class="job-card">
+      {% for job in jobs %}
+      <h2>{{job.job_title}}</h2>
+      <h4>{{job.employer_name}}</h4>
+      <img src="{{job.employer_logo}}" alt="Company logo" />
+      <p>{{job.job_location}}</p>
+      <p>{{job.job_posted_at}}</p>
+      <p>{{job.job_publisher}}</p>
+      {% endfor %}
+    </div>
   </body>
 </html>
