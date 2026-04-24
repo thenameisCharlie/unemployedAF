@@ -23,7 +23,7 @@ def search_results():
 
     url = "https://jsearch.p.rapidapi.com/search"
 
-    params = {"query": query, "page": 1, "num_pages": 1, "country": "us", "date_posted": "all"}
+    params = {"query": query, "page": 1, "num_pages": 5, "country": "us", "date_posted": "all"}
 
     headers = {"x-rapidapi-key": API_KEY, "x-rapidapi-host": "jsearch.p.rapidapi.com"}
 
