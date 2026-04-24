@@ -53,15 +53,15 @@
         <i class="fa-solid fa-magnifying-glass"></i>
       </button>
     </form>
+    {% for job in jobs %}
     <div class="job-card">
-      {% for job in jobs %}
       <h2>{{job.job_title}}</h2>
       <h4>{{job.employer_name}}</h4>
       <img src="{{job.employer_logo}}" alt="Company logo" />
       <p>{{job.job_location}}</p>
       <p>{{job.job_posted_at}}</p>
       <p>{{job.job_publisher}}</p>
-      {% endfor %}
     </div>
+    {% endfor %}
   </body>
 </html>
