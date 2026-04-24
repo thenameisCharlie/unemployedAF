@@ -55,12 +55,19 @@
     </form>
     {% for job in jobs %}
     <div class="job-card">
-      <h2>{{job.job_title}}</h2>
-      <h4>{{job.employer_name}}</h4>
-      <img src="{{job.employer_logo}}" alt="Company logo" />
-      <p>{{job.job_location}}</p>
-      <p>{{job.job_posted_at}}</p>
-      <p>{{job.job_publisher}}</p>
+      <div class="job-logo">
+        <img src="{{job.employer_logo}}" alt="Company logo" />
+      </div>
+      <div class="job-details">
+        <h4>{{job.employer_name}}</h4>
+        <!-- <p>{{job.job_publisher}}</p> -->
+        <h2>{{job.job_title}}</h2>
+      </div>
+      <div class="job-time-location">
+        <p>{{job.job_location}}</p>
+        <p>{{job.job_posted_at}}</p>
+      </div>
+      <button class="expand-btn">›</button>
     </div>
     {% endfor %}
   </body>
