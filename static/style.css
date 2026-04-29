@@ -12,7 +12,7 @@ nav img {
 /* container inside of Navbar */
 .inner-container {
   display: flex; /*arranges the children (<a/>) in the parent (inner-container <div>) in a row */
-  align-items: center; /* Aligns all the children along the middle of the row (Avoids the links from moving to the top since the logo is larger)*/
+  align-items: center; /* Aligns all the children along the middle of the row (vertically)*/
   width: 100%; /* Standard for centering content width*/
   padding: 0.5rem 0.5rem; /*creates space for the content from the border. first rem top and bottom second rem left and right*/
 }
@@ -104,3 +104,18 @@ body {
 }
 
 /*Job Listing Results*/
+.job-card {
+  display: flex; /*arranges the children (<div>) in the parent (job-card <div>) in a row */
+  max-width: 1000px; /*Sets a ceiling on how wide an element (job results card) can grow */
+  margin: 0 auto; /*Centers the cards to the middle of the page by consuming equal margin space on both sides */
+  align-items: center; /* Vertically aligns all the children along the middle of the row to ensure nothing snaps to the top of the card*/
+  background-color: white; /*background card color change */
+  padding: 0.75rem 1.5rem;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+}
+
+.job-time-location {
+  display: flex;
+  margin-left: auto;
+}
