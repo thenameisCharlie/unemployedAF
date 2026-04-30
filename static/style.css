@@ -106,16 +106,68 @@ body {
 /*Job Listing Results*/
 .job-card {
   display: flex; /*arranges the children (<div>) in the parent (job-card <div>) in a row */
-  max-width: 1000px; /*Sets a ceiling on how wide an element (job results card) can grow */
-  margin: 0 auto; /*Centers the cards to the middle of the page by consuming equal margin space on both sides */
+  max-width: 1200px; /*Sets a ceiling on how wide an element (job results card) can grow */
+  margin: 0 auto 20px; /*Centers the cards to the middle of the page by consuming equal margin space on both sides */
   align-items: center; /* Vertically aligns all the children along the middle of the row to ensure nothing snaps to the top of the card*/
   background-color: white; /*background card color change */
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 1.5rem; /* Padding creates comfortable space around the elements in the card */
   border: 1px solid lightgray;
-  border-radius: 10px;
+  border-radius: 5px;
+  position: relative; /* establishes a boundary so absolutely positioned children anchor to this card, not the page */
+}
+
+.job-logo img {
+  height: 60px; /* Manually adjust the height of the image */
+  width: auto; /* automatically adjusts the image proportionally to the height adjusted (Avoids squishing image) */
 }
 
 .job-time-location {
-  display: flex;
-  margin-left: auto;
+  display: flex; /*arranges the children (<p>) in the parent (job-time-location <div>) in a row */
+  gap: 0.5rem; /*Creates a gap between the elements */
+  position: absolute; /* removes element from normal flow and places it at exact coordinates within the nearest position:relative ancestor */
+  top: 0rem; /* pins element to the top edge of the job-card */
+  right: 1rem; /* pins element 1rem away from the right edge of the job-card */
+}
+
+.expand-btn {
+  position: absolute; /* removes element from normal flow and places it at exact coordinates within the nearest position:relative ancestor */
+  bottom: 0%; /* places element 0% of the way up from the bottom of the job-card */
+  right: 1rem; /* pins element 1rem away from the right edge of the job-card */
+  transform: translateY(
+    -50%
+  ); /* shifts the element up by half its own height to achieve true vertical centering */
+}
+
+.job-results-search-bar {
+  display: flex; /*arranges the children (<input/>) in the parent (form) in a row  */
+  background-color: white; /*background color change */
+  border: 1px solid lightgrey; /*Makes the border line visible */
+  border-radius: 10px; /*Rounds the border edges  */
+  max-width: 800px; /*Sets a ceiling on how wide an element (search bar) can grow */
+  margin: 20px auto; /*Centers the search bar to the middle of the page by consuming equal margin space on both sides */
+  overflow: hidden; /*clips anything that goes beyond the rounded corners boundaries */
+}
+
+.job-results-search-bar input {
+  border: none; /*Removes the borders around the inputs in the search-bar container */
+  flex: 1; /*Divides the space evenly between the input children */
+  padding: 0.75rem 1rem; /* Padding creates comfortable space around the text user type */
+  font-size: 1rem;
+  font-family:
+    "Poppins", sans-serif; /*Google font chosen. If font fails it defaults to sans-serif*/
+}
+
+.job-results-search-bar input + input {
+  border-left: 1px solid lightgray; /*Adds a vertical divider to the left of every input that is behind another input*/
+  padding-left: 1rem; /*Creates space between the vertical divider and the input values*/
+}
+
+.job-results-search-bar button {
+  background-color: #b13333; /*Changes the color of the button background */
+  color: white; /*Changes the color of the button text */
+  flex-shrink: 0; /* Preventative in case smaller screens squeeze the button */
+  padding: 0.75rem 1.5rem; /* Padding around the "search" and to match the the height of input padding */
+  font-size: 1.2rem;
+  border: none; /* Removes the borders from the button */
+  cursor: pointer; /* Turns the mouse into a hand when it hovers the button */
 }
