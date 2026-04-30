@@ -113,12 +113,20 @@ body {
   padding: 0.75rem 1.5rem; /* Padding creates comfortable space around the elements in the card */
   border: 1px solid lightgray;
   border-radius: 5px;
+  font-family:
+    "Poppins", sans-serif; /*Google font chosen. If font fails it defaults to sans-serif*/
   position: relative; /* establishes a boundary so absolutely positioned children anchor to this card, not the page */
 }
 
 .job-logo img {
   height: 60px; /* Manually adjust the height of the image */
   width: auto; /* automatically adjusts the image proportionally to the height adjusted (Avoids squishing image) */
+  border: 1px solid lightgrey;
+  object-fit: contain; /* makes image fit neatly within its boundaries without stretching */
+}
+
+.job-details {
+  padding-left: 1rem;
 }
 
 .job-time-location {
@@ -127,6 +135,7 @@ body {
   position: absolute; /* removes element from normal flow and places it at exact coordinates within the nearest position:relative ancestor */
   top: 0rem; /* pins element to the top edge of the job-card */
   right: 1rem; /* pins element 1rem away from the right edge of the job-card */
+  font-size: 0.5rem;
 }
 
 .expand-btn {
@@ -136,6 +145,12 @@ body {
   transform: translateY(
     -50%
   ); /* shifts the element up by half its own height to achieve true vertical centering */
+}
+
+.job-card h2,
+.job-card h4,
+.job-card p {
+  margin: 0; /* removes default browser spacing on text elements inside the card */
 }
 
 .job-results-search-bar {
