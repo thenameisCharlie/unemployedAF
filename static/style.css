@@ -186,3 +186,37 @@ body {
   border: none; /* Removes the borders from the button */
   cursor: pointer; /* Turns the mouse into a hand when it hovers the button */
 }
+
+/*Job Salaries page*/
+.job-salary-search {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 30px 0 100px;
+  border-bottom-right-radius: 80px;
+}
+
+.salary-search-bar {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 700px; /*Sets a ceiling on how wide an element (search bar) can grow*/
+  margin: 20px auto; /*Centers the search bar to the middle of the page by consuming equal margin space on both sides */
+  overflow: hidden; /*clips anything that goes beyond the rounded corners boundaries */
+}
+
+.salary-search-bar input {
+  border-radius: 10px;
+  padding: 0.5rem 2rem; /* Padding creates comfortable space around the text user type */
+  font-size: 1rem;
+  font-family:
+    "Poppins", sans-serif; /*Google font chosen. If font fails it defaults to sans-serif*/
+}
+
+.salary-search-bar button {
+  background-color: #b13333; /*Changes the color of the button background */
+  border-radius: 10px;
+  color: white; /*Changes the color of the button text */
+  flex-shrink: 0; /* Preventative in case smaller screens squeeze the button */
+  padding: 0.5rem 1.5rem; /* Padding around the "search" and to match the the height of input padding */
+  font-size: 1.2rem;
+  border: none; /* Removes the borders from the button */
+  cursor: pointer; /* Turns the mouse into a hand when it hovers the button */
+}

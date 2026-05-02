@@ -1,50 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Job salaries page</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
 
-  {%include "components/navbar.html"%}
-
   <body>
+    {%include "components/navbar.html"%}
+
     <div class="job-salary-search">
       <h2 class="salary-slogan">
-        Get paid what you're worth. Check your career salary
+        Get paid what you're <span id="worth-word">worth</span>. Check your
+        career
+        <span id="salary-word">salary</span>
       </h2>
       <form
         class="salary-search-bar"
         action="{{url_for('jobsalaryresults.job_salary_results')}}"
         method="get"
       >
-        <label for="job-salary-title" class="job-salary-search-bar"
-          >Job title</label
-        >
-        <input type="text" id="job-salary-title" name="job-salary-title" />
+        <input
+          type="text"
+          id="job-salary-title"
+          name="job-salary-title"
+          placeholder="Job title"
+        />
 
-        <label for="job-salary-location" class="job-salary-search-bar"
-          >Location</label
-        >
         <input
           type="text"
           id="job-salary-location"
           name="job-salary-location"
+          placeholder="Where?"
         />
 
-        <button type="submit">Search</button>
+        <button type="submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
       </form>
     </div>
     <div class="display-top-paying-careers">
       <h3 class="top-careers">Top paying careers</h3>
+      {%for top_wage in top_wages%}
       <div class="top-career-details">
-        {%for top_wage in top_wages%}
-        <p id="top-salary-title">{{top_wage.OCC_TITLE}}</p>
-        <p id="top-salary-annually">
+        <p class="top-salary-title">{{top_wage.OCC_TITLE}}</p>
+        <p class="top-salary-annually">
           ${{"{:,.0f}".format(top_wage.A_MEAN)}} per year
         </p>
-        {%endfor%}
       </div>
+      {%endfor%}
     </div>
   </body>
 </html>
