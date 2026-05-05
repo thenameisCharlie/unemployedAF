@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box; /* Makes padding and border count inside every element's width, not added on top */
+}
+
 /* Navbar */
 nav {
   border-bottom: 1px solid rgba(177, 51, 51, 0.2);
@@ -237,11 +241,9 @@ body {
   outline: none; /* Removes the browser's default blue/white highlight ring when an input is clicked */
 }
 
-.display-top-paying-careers {
-  display: flex;
-  flex-wrap: wrap; /* Allows cards to spill onto the next row instead of squishing into one line */
-  gap: 1rem;
+.career-section {
   max-width: 1200px;
+  padding: 0rem 60px;
   margin: 0 auto;
 }
 
@@ -253,11 +255,22 @@ body {
     "Poppins", sans-serif; /*Google font chosen. If font fails it defaults to sans-serif*/
 }
 
+.display-top-paying-careers {
+  display: flex;
+  flex-wrap: wrap; /* Allows cards to spill onto the next row instead of squishing into one line */
+  gap: 2rem;
+}
+
 .top-career-card {
   text-align: center;
   flex-basis: calc(
-    (100% - 2rem) / 3
+    (100% - 4rem) / 3
   ); /* Sets each card to exactly 1/3 of the container width, accounting for the 2 gaps between 3 cards */
+  background-color: white;
+  border: 1px solid #a9a9a9;
+  border-radius: 20px;
+  padding: 2rem 1rem;
+  box-sizing: border-box; /* Makes padding and border count as part of the element's total width, not added on top of it */
 }
 
 .top-career-card p {

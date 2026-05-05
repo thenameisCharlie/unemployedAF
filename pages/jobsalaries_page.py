@@ -20,7 +20,7 @@ def job_salaries():
     top_wages_data = df[job_salary > 150000]
 
     #Retruns 6 rows of the DataFrame and randomizes them 
-    randomized_top_wages = top_wages_data.sample(n=6, random_state=None)
+    randomized_top_wages = top_wages_data.sample(n=9, random_state=None)
 
     #Narrows the DataFrame to just the columns that are needed for display
     top_wages = randomized_top_wages[["OCC_TITLE","A_MEAN"]].to_dict(orient="records")
