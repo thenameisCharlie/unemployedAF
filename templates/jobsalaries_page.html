@@ -52,16 +52,18 @@
         </button>
       </form>
     </div>
-    <div class="display-top-paying-careers">
+    <div class="career-section">
       <h3 class="top-careers">Top paying careers</h3>
-      {%for top_wage in top_wages%}
-      <div class="top-career-details">
-        <p class="top-salary-title">{{top_wage.OCC_TITLE}}</p>
-        <p class="top-salary-annually">
-          ${{"{:,.0f}".format(top_wage.A_MEAN)}} per year
-        </p>
+      <div class="display-top-paying-careers">
+        {%for top_wage in top_wages%}
+        <div class="top-career-card">
+          <p class="top-salary-title">{{top_wage.OCC_TITLE}}</p>
+          <p class="top-salary-annually">
+            ${{"{:,.0f}".format(top_wage.A_MEAN)}} per year
+          </p>
+        </div>
+        {%endfor%}
       </div>
-      {%endfor%}
     </div>
   </body>
 </html>

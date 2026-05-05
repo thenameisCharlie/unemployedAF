@@ -236,3 +236,30 @@ body {
 .salary-search-bar input:focus {
   outline: none; /* Removes the browser's default blue/white highlight ring when an input is clicked */
 }
+
+.display-top-paying-careers {
+  display: flex;
+  flex-wrap: wrap; /* Allows cards to spill onto the next row instead of squishing into one line */
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.career-section h3 {
+  color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  font-size: 1.5rem;
+  font-family:
+    "Poppins", sans-serif; /*Google font chosen. If font fails it defaults to sans-serif*/
+}
+
+.top-career-card {
+  text-align: center;
+  flex-basis: calc(
+    (100% - 2rem) / 3
+  ); /* Sets each card to exactly 1/3 of the container width, accounting for the 2 gaps between 3 cards */
+}
+
+.top-career-card p {
+  margin: 0; /* removes default browser spacing on text elements inside the card */
+}
