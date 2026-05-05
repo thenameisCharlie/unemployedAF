@@ -1,5 +1,12 @@
+/*Entire site*/
 * {
   box-sizing: border-box; /* Makes padding and border count inside every element's width, not added on top */
+}
+
+body {
+  background-color: #f4f3f2;
+  font-family:
+    "Poppins", sans-serif; /*Google font chosen. If font fails it defaults to sans-serif*/
 }
 
 /* Navbar */
@@ -37,8 +44,6 @@ nav a {
   text-decoration: none; /*removes text underline*/
   color: black; /*text color*/
   transition: color 0.3s; /*transition hover color between text color*/
-  font-family:
-    "Poppins", sans-serif; /*Google font chosen. If font fails it defaults to sans-serif*/
   font-size: 0.9rem;
 }
 
@@ -53,10 +58,6 @@ nav a + a {
 }
 
 /*Homepage*/
-body {
-  background-color: #f4f3f2;
-}
-
 .search-bar-section {
   padding-top: 8rem; /*Adds space between the navbar and the slogan and search bar*/
 }
@@ -99,8 +100,6 @@ body {
   color: #b13333;
   font-size: 1.85rem;
   text-align: center;
-  font-family:
-    "Poppins", sans-serif; /*Google font chosen. If font fails it defaults to sans-serif*/
 }
 
 .slogan-word-two {
@@ -117,8 +116,6 @@ body {
   padding: 0.75rem 1.5rem; /* Padding creates comfortable space around the elements in the card */
   border: 1px solid lightgray;
   border-radius: 5px;
-  font-family:
-    "Poppins", sans-serif; /*Google font chosen. If font fails it defaults to sans-serif*/
   position: relative; /* establishes a boundary so absolutely positioned children anchor to this card, not the page */
 }
 
@@ -172,8 +169,6 @@ body {
   flex: 1; /*Divides the space evenly between the input children */
   padding: 0.75rem 1rem; /* Padding creates comfortable space around the text user type */
   font-size: 1rem;
-  font-family:
-    "Poppins", sans-serif; /*Google font chosen. If font fails it defaults to sans-serif*/
 }
 
 .job-results-search-bar input + input {
@@ -202,8 +197,6 @@ body {
   color: #b13333;
   text-align: center;
   font-size: 1.8rem;
-  font-family:
-    "Poppins", sans-serif; /*Google font chosen. If font fails it defaults to sans-serif*/
 }
 
 .salary-slogan span {
@@ -222,8 +215,6 @@ body {
   flex: 1; /* Tells each input to grow equally and fill all remaining space after the button takes its fixed width */
   padding: 0.5rem 1rem; /* Padding creates comfortable space around the text user type */
   font-size: 1rem;
-  font-family:
-    "Poppins", sans-serif; /*Google font chosen. If font fails it defaults to sans-serif*/
 }
 
 .salary-search-bar button {
@@ -251,20 +242,18 @@ body {
   color: rgba(0, 0, 0, 0.8);
   text-align: center;
   font-size: 1.5rem;
-  font-family:
-    "Poppins", sans-serif; /*Google font chosen. If font fails it defaults to sans-serif*/
 }
 
 .display-top-paying-careers {
   display: flex;
   flex-wrap: wrap; /* Allows cards to spill onto the next row instead of squishing into one line */
-  gap: 2rem;
+  gap: 4rem 5rem;
 }
 
 .top-career-card {
   text-align: center;
   flex-basis: calc(
-    (100% - 4rem) / 3
+    (100% - 18rem) / 3
   ); /* Sets each card to exactly 1/3 of the container width, accounting for the 2 gaps between 3 cards */
   background-color: white;
   border: 1px solid #a9a9a9;
@@ -275,4 +264,15 @@ body {
 
 .top-career-card p {
   margin: 0; /* removes default browser spacing on text elements inside the card */
+}
+
+.occupation-title {
+  font-size: 0.95rem;
+  font-weight: bold;
+}
+
+.top-annual-salary {
+  font-size: 0.9rem;
+  color: #b13333;
+  font-weight: bold;
 }

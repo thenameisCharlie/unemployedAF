@@ -57,8 +57,8 @@
       <div class="display-top-paying-careers">
         {%for top_wage in top_wages%}
         <div class="top-career-card">
-          <p class="top-salary-title">{{top_wage.OCC_TITLE}}</p>
-          <p class="top-salary-annually">
+          <p class="occupation-title">{{top_wage.OCC_TITLE}}</p>
+          <p class="top-annual-salary">
             Average salary ${{"{:,.0f}".format(top_wage.A_MEAN)}} per year
           </p>
         </div>
