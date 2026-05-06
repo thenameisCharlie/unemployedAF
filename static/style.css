@@ -204,7 +204,7 @@ nav a + a {
 }
 
 .salary-search-bar {
-  display: flex;
+  display: flex; /*arranges the children in a row  */
   gap: 0.75rem;
   max-width: 600px; /*Sets a ceiling on how wide an element (search bar) can grow*/
   margin: 0 auto; /*Centers the search bar to the middle of the page by consuming equal margin space on both sides */
@@ -233,9 +233,9 @@ nav a + a {
 }
 
 .career-section {
-  max-width: 1200px;
-  padding: 0rem 60px;
-  margin: 0 auto;
+  max-width: 1200px; /*Sets a ceiling on how wide an element (job results card) can grow */
+  padding: 2rem 2rem 0; /*creates breathing space between the first and last card */
+  margin: 0 auto; /*Centers the cards to the middle of the page by consuming equal margin space on both sides */
 }
 
 .career-section h3 {
@@ -245,20 +245,20 @@ nav a + a {
 }
 
 .display-top-paying-careers {
-  display: flex;
+  display: flex; /* Turns this container into a flex parent, making all direct children (cards) flex items it can control */
   flex-wrap: wrap; /* Allows cards to spill onto the next row instead of squishing into one line */
-  gap: 4rem 5rem;
+  gap: 3rem 6rem; /* Sets spacing between cards — 3rem between rows, 6rem between columns */
 }
 
 .top-career-card {
-  text-align: center;
+  text-align: center; /* Aligns text to the center of the page */
   flex-basis: calc(
-    (100% - 18rem) / 3
+    (100% - 12rem) / 3
   ); /* Sets each card to exactly 1/3 of the container width, accounting for the 2 gaps between 3 cards */
   background-color: white;
   border: 1px solid #a9a9a9;
-  border-radius: 20px;
-  padding: 2rem 1rem;
+  border-radius: 20px; /* Can manipulate the borders edges */
+  padding: 2rem 1rem; /* Adds breathing space inside of each card */
   box-sizing: border-box; /* Makes padding and border count as part of the element's total width, not added on top of it */
 }
 
