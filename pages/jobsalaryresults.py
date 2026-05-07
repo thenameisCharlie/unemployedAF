@@ -29,9 +29,13 @@ def job_salary_results():
     filtered_data = df[df["OCC_TITLE"].str.contains(job_title, case=False, na=False) &
                         df["AREA_TITLE"].str.contains(job_location, case=False, na=False)]
     
-    #turns the table's col into a list of dicts and making it one dict per row (orient="records")
+    #turns the DataFrame's col into a list of dicts and making it one dict per row (orient="records")
     #Note [[]] is for the DataFrame and [] is for a Series which doesn't work with .to_dict()
     job_wages = filtered_data[["OCC_TITLE", "AREA_TITLE", "H_MEAN", "A_MEAN", "H_PCT10", "H_PCT90", "A_PCT10", "A_PCT90"]].to_dict(orient="records") 
 
-    #render the html file, left variable: name the html template will use, right variable: python variable
-    return render_template("jobsalaryresults.html", job_wages=job_wages)
+    if len(job_wages) == 1:
+        return render_template("jobsalaryresults.html", job_wage=job_wages[0])
+    
+    else:
+        #render the html file, left variable: name the html template will use, right variable: python variable
+        return render_template("jobsalaryresults.html", job_wages=job_wages)
