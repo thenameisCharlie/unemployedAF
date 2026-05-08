@@ -49,42 +49,64 @@
         </h2>
       </div>
     </div>
+
     {%elif job_wages%}
-
     <h1 class="job-title">{{job_wages[0].OCC_TITLE}}</h1>
+    <p id="wage-question">How much do {{job_wages[0].OCC_TITLE}} make?</p>
 
-    <p class="job-wage-question">
-      How much do {{job_wages[0].OCC_TITLE}} make?
-    </p>
-
-    <p>Select a state to see salary details</p>
-
-    <!-- {%for job_wage in job_wages %}
+    <select id="state-dropdown">
+      <option value="">Select a state</option>
+    </select>
 
     <div class="wage-values-card">
       <div class="wage-stat">
         <p>Average base salary</p>
-        <h2>
-          {% if job_wage.A_MEAN is number %}
-          ${{"{:,.0f}".format(job_wage.A_MEAN)}}{% else %}N/A{% endif %}
-        </h2>
+        <h2 id="avg-salary">—</h2>
       </div>
       <div class="wage-stat">
         <p>Low</p>
-        <h2>
-          {% if job_wage.A_PCT10 is number %}
-          ${{"{:,.0f}".format(job_wage.A_PCT10)}}{% else %}N/A{% endif %}
-        </h2>
+        <h2 id="low-salary">—</h2>
       </div>
       <div class="wage-stat">
         <p>High</p>
-        <h2>
-          {% if job_wage.A_PCT90 is number
-          %}${{"{:,.0f}".format(job_wage.A_PCT90)}}{% else %}N/A{% endif %}
-        </h2>
+        <h2 id="high-salary">—</h2>
       </div>
     </div>
-    {% endfor %}  -->
+
+    <script>
+      //Jinja embeds the Python list as a JSON array — JS can now read it
+      const wageData = {{ job_wages | tojson }};
+
+      const dropdown = document.getElementById("state-dropdown");
+      const wageQuestion = document.getElementById("wage-question");
+      const avgSalary = document.getElementById("avg-salary");
+      const lowSalary = document.getElementById("low-salary");
+      const highSalary = document.getElementById("high-salary");
+
+      // Build one <option> per state
+      wageData.forEach(function(wage) {
+      const option = document.createElement("option");
+      option.value = wage.AREA_TITLE;
+      option.textContent = wage.AREA_TITLE;
+      dropdown.appendChild(option);
+      });
+
+      // When user picks a state, find the matching object and update the card
+      dropdown.addEventListener("change", function() {
+      const selected = dropdown.value;
+      const match = wageData.find(function(w) {
+      return w.AREA_TITLE === selected;
+      });
+
+      if (match) {
+      wageQuestion.textContent = "How much do " + match.OCC_TITLE + " make in " + match.AREA_TITLE + "?";
+      avgSalary.textContent = match.A_MEAN ? "$" + Math.round(match.A_MEAN).toLocaleString() : "N/A";
+      lowSalary.textContent = match.A_PCT10 ? "$" + Math.round(match.A_PCT10).toLocaleString() : "N/A";
+      highSalary.textContent = match.A_PCT90 ? "$" + Math.round(match.A_PCT90).toLocaleString() : "N/A";
+        }
+      });
+    </script>
+
     {%else%}
     <p class="no-results-found">
       No results found. Try another job title or location
