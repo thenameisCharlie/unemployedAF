@@ -111,8 +111,8 @@
     </script>
 
     {%elif job_wages and dropdown_type == "occupation"%}
-    <h1 class="job-title">{{job_title}}</h1>
-    <p id="wage-question">
+    <h1 id="job-title">{{job_title}}</h1>
+    <p id="occupation-question">
       Select an occupation to see salaries in {{job_wages[0].AREA_TITLE}}
     </p>
 
@@ -139,8 +139,9 @@
       //Jinja embeds the Python list as a JSON array — JS can now read it
       const occupationData = {{ job_wages | tojson }};
 
+      const occupationTitle = document.getElementById("job-title");
       const occupationDropdown = document.getElementById("occupation-dropdown");
-      const occupationQuestion = document.getElementById("wage-question");
+      const occupationQuestion = document.getElementById("occupation-question");
       const occupationAvgSalary = document.getElementById("avg-salary");
       const occupationLowSalary = document.getElementById("low-salary");
       const occupationHighSalary = document.getElementById("high-salary");
@@ -150,7 +151,7 @@
       const option = document.createElement("option");
       option.value = occ.OCC_TITLE;
       option.textContent = occ.OCC_TITLE;
-      dropdown.appendChild(option);
+      occupationDropdown.appendChild(option);
       });
 
       // When user picks a state, find the matching object and update the card
@@ -161,6 +162,7 @@
       });
 
       if (match) {
+      occupationTitle.textContent = match.OCC_TITLE;
       occupationQuestion.textContent = "How much do " + match.OCC_TITLE + " make in " + match.AREA_TITLE + "?";
       occupationAvgSalary.textContent = match.A_MEAN ? "$" + Math.round(match.A_MEAN).toLocaleString() : "N/A";
       occupationLowSalary.textContent = match.A_PCT10 ? "$" + Math.round(match.A_PCT10).toLocaleString() : "N/A";
