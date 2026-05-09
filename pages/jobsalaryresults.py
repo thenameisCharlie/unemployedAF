@@ -9,6 +9,8 @@ def job_salary_results():
     #Reads the data from the jobsalaries_page html form that the user sends the backend
     job_title = request.args.get("job-salary-title", "").strip()
     job_location = request.args.get("job-salary-location", "").strip()
+    unique_jobs = df["OCC_TITLE"].nunique()    # how many distinct job titles
+    unique_states = df["AREA_TITLE"].nunique() # how many distinct states
     
     df = pd.read_excel("data/wages_data_by_state.xlsx") #read the excel file 
 
@@ -32,10 +34,23 @@ def job_salary_results():
     #turns the DataFrame's col into a list of dicts and making it one dict per row (orient="records")
     #Note [[]] is for the DataFrame and [] is for a Series which doesn't work with .to_dict()
     job_wages = filtered_data[["OCC_TITLE", "AREA_TITLE", "H_MEAN", "A_MEAN", "H_PCT10", "H_PCT90", "A_PCT10", "A_PCT90"]].to_dict(orient="records") 
+    
+    # filter results down to matching job title and location
+    unique_jobs = df["OCC_TITLE"].nunique()    # count distinct job titles in results (returns an integer)
+    unique_states = df["AREA_TITLE"].nunique() # count distinct states in results (returns an integer)
 
+    # case 1 — exact match, one job one state, show card directly
     if len(job_wages) == 1:
         return render_template("jobsalaryresults.html", job_wage=job_wages[0])
     
+    # case 2 — one job title, multiple states, let user pick a state
+    elif unique_jobs == 1 and unique_states > 1:
+        return render_template("jobsalaryresults.html", job_wages=job_wages, dropdown_type="state")
+    
+    # case 3 — multiple job titles, one state, let user pick an occupation
+    elif unique_jobs > 1 and unique_states == 1:
+        return render_template("jobsalaryresults.html", job_wages=job_wages, dropdown_type="occupation", job_title=job_title)
+    
+    # case 4 — multiple jobs and multiple states, handle later
     else:
-        #render the html file, left variable: name the html template will use, right variable: python variable
-        return render_template("jobsalaryresults.html", job_wages=job_wages)
+        pass
