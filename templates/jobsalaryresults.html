@@ -26,6 +26,12 @@
     <p class="job-wage-question">
       How much do {{job_wage.OCC_TITLE}} make in {{job_wage.AREA_TITLE}}?
     </p>
+
+    <select id="annual-hourly-option">
+      <option value="annual">Annually</option>
+      <option value="hourly">Hourly</option>
+    </select>
+
     <div class="wage-values-card">
       <div class="wage-stat">
         <p>Average base salary</p>
@@ -58,6 +64,11 @@
 
     <select id="state-dropdown">
       <option value="">Select a state</option>
+    </select>
+
+    <select id="annual-hourly-option">
+      <option value="annual">Annually</option>
+      <option value="hourly">Hourly</option>
     </select>
 
     <div class="wage-values-card">
@@ -120,6 +131,11 @@
       <option value="">Select an occupation</option>
     </select>
 
+    <select id="annual-hourly-option">
+      <option value="annual">Annually</option>
+      <option value="hourly">Hourly</option>
+    </select>
+
     <div class="wage-values-card">
       <div class="wage-stat">
         <p>Average base salary</p>
@@ -140,11 +156,32 @@
       const occupationData = {{ job_wages | tojson }};
 
       const occupationTitle = document.getElementById("job-title");
+      const salaryDropdown = document.getElementById("annual-hourly-option")
       const occupationDropdown = document.getElementById("occupation-dropdown");
       const occupationQuestion = document.getElementById("occupation-question");
       const occupationAvgSalary = document.getElementById("avg-salary");
       const occupationLowSalary = document.getElementById("low-salary");
       const occupationHighSalary = document.getElementById("high-salary");
+
+      let currentMode = "annual";
+      let currentMatch = null;
+
+      function updateSalaryCard(match){
+        currentMatch = match;
+
+        if(currentMode === "annual"){
+
+          occupationAvgSalary.textContent = match.A_MEAN ? "$" + Math.round(match.A_MEAN).toLocaleString() : "N/A";
+          occupationLowSalary.textContent = match.A_PCT10 ? "$" + Math.round(match.A_PCT10).toLocaleString() : "N/A";
+          occupationHighSalary.textContent = match.A_PCT90 ? "$" + Math.round(match.A_PCT90).toLocaleString() : "N/A";
+
+        } else {
+          occupationAvgSalary.textContent = match.H_MEAN ? "$" + Math.round(match.H_MEAN).toLocaleString() : "N/A";
+          occupationLowSalary.textContent = match.H_PCT10 ? "$" + Math.round(match.H_PCT10).toLocaleString() : "N/A";
+          occupationHighSalary.textContent = match.H_PCT90 ? "$" + Math.round(match.H_PCT90).toLocaleString() : "N/A";
+
+          }
+      }
 
       // Build one <option> per occupation
       occupationData.forEach(function(occ) {
@@ -161,15 +198,21 @@
       return w.OCC_TITLE === selected;
       });
 
-      //if occupation matches update the text for the following
+      //if occupation matches update the text for the occupation name and the question
       if (match) {
-      occupationTitle.textContent = match.OCC_TITLE;
-      occupationQuestion.textContent = "How much do " + match.OCC_TITLE + " make in " + match.AREA_TITLE + "?";
-      occupationAvgSalary.textContent = match.A_MEAN ? "$" + Math.round(match.A_MEAN).toLocaleString() : "N/A";
-      occupationLowSalary.textContent = match.A_PCT10 ? "$" + Math.round(match.A_PCT10).toLocaleString() : "N/A";
-      occupationHighSalary.textContent = match.A_PCT90 ? "$" + Math.round(match.A_PCT90).toLocaleString() : "N/A";
+        occupationTitle.textContent = match.OCC_TITLE;
+        occupationQuestion.textContent = "How much do " + match.OCC_TITLE + " make in " + match.AREA_TITLE + "?";
+        updateSalaryCard(match);
         }
       });
+
+      salaryDropdown.addEventListener("change", function(){
+        currentMode = salaryDropdown.value;
+        if(currentMatch){
+          updateSalaryCard(currentMatch);
+        }
+
+      })
     </script>
 
     {%else%}

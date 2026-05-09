@@ -31,7 +31,7 @@ def job_salary_results():
     
     #turns the DataFrame's col into a list of dicts and making it one dict per row (orient="records")
     #Note [[]] is for the DataFrame and [] is for a Series which doesn't work with .to_dict()
-    job_wages = filtered_data[["OCC_TITLE", "AREA_TITLE", "H_MEAN", "A_MEAN", "H_PCT10", "H_PCT90", "A_PCT10", "A_PCT90"]].to_dict(orient="records") 
+    job_wages = filtered_data[["OCC_TITLE", "AREA_TITLE", "H_MEAN", "H_PCT10", "H_PCT90", "A_MEAN", "A_PCT10", "A_PCT90"]].to_dict(orient="records") 
     
     # filter results down to matching job title and location
     unique_jobs = filtered_data["OCC_TITLE"].nunique()    # count distinct job titles in results (returns an integer)
