@@ -198,7 +198,7 @@
       return w.OCC_TITLE === selected;
       });
 
-      //if occupation matches update the text for the occupation name and the question
+      //if occupation matches update the text for the occupation name, question and execute function
       if (match) {
         occupationTitle.textContent = match.OCC_TITLE;
         occupationQuestion.textContent = "How much do " + match.OCC_TITLE + " make in " + match.AREA_TITLE + "?";
@@ -206,12 +206,12 @@
         }
       });
 
+      // When user switches between annual/hourly, update currentMode and re-render the card IF an occupation is already selected
       salaryDropdown.addEventListener("change", function(){
         currentMode = salaryDropdown.value;
         if(currentMatch){
           updateSalaryCard(currentMatch);
         }
-
       })
     </script>
 
