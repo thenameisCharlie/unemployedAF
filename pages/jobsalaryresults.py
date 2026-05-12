@@ -3,14 +3,15 @@ import pandas as pd
 
 jobsalaryresults_bp = Blueprint("jobsalaryresults", __name__)
 
+#read the excel file (Caches the data to avoid reading it again after every page reload)
+df = pd.read_excel("data/wages_data_by_state.xlsx") 
+
 @jobsalaryresults_bp.route("/jobsalaryresults")
 def job_salary_results():
 
     #Reads the data from the jobsalaries_page html form that the user sends the backend
     job_title = request.args.get("job-salary-title", "").strip()
     job_location = request.args.get("job-salary-location", "").strip()
-    
-    df = pd.read_excel("data/wages_data_by_state.xlsx") #read the excel file 
 
     #created a list of all the columns with string values that should be numeric
     wage_cols = ["A_MEAN","A_PCT10","A_PCT90","H_MEAN","H_PCT10","H_PCT90"]
