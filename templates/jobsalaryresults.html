@@ -35,26 +35,51 @@
     <div class="wage-values-card">
       <div class="wage-stat">
         <p>Average base salary</p>
-        <h2>
-          {% if job_wage.A_MEAN is number %}
-          ${{"{:,.0f}".format(job_wage.A_MEAN)}}{% else %}N/A{% endif %}
-        </h2>
+        <h2 id="avg-salary">-</h2>
       </div>
       <div class="wage-stat">
         <p>Low</p>
-        <h2>
-          {% if job_wage.A_PCT10 is number %}
-          ${{"{:,.0f}".format(job_wage.A_PCT10)}}{% else %}N/A{% endif %}
-        </h2>
+        <h2 id="low-salary">-</h2>
       </div>
       <div class="wage-stat">
         <p>High</p>
-        <h2>
-          {% if job_wage.A_PCT90 is number
-          %}${{"{:,.0f}".format(job_wage.A_PCT90)}}{% else %}N/A{% endif %}
-        </h2>
+        <h2 id="high-salary">-</h2>
       </div>
     </div>
+
+    <script>
+      const salaryData = {{ job_wage | tojson }};
+
+      const toggleDropdown = document.getElementById("annual-hourly-option")
+      const cardAvgSalary = document.getElementById("avg-salary");
+      const cardLowSalary = document.getElementById("low-salary");
+      const cardHighSalary = document.getElementById("high-salary");
+
+      let currentModeResult = "annual";
+      let currentResult = salaryData;
+
+      // Updates the wage card based on the current mode (annual/hourly)
+      // Called immediately on page load and again when the toggle changes
+      function updateSalaryCard(currentResult){
+
+        if (currentModeResult == "annual"){
+          cardAvgSalary.textContent = currentResult.A_MEAN ? "$" + Math.round(currentResult.A_MEAN).toLocaleString() : "N/A";
+          cardLowSalary.textContent = currentResult.A_PCT10 ? "$" + Math.round(currentResult.A_PCT10).toLocaleString() : "N/A";
+          cardHighSalary.textContent = currentResult.A_PCT90 ? "$" + Math.round(currentResult.A_PCT90).toLocaleString() : "N/A";
+        } else{
+          cardAvgSalary.textContent = currentResult.H_MEAN ? "$" + Math.round(currentResult.H_MEAN).toLocaleString() : "N/A";
+          cardLowSalary.textContent = currentResult.H_PCT10 ? "$" + Math.round(currentResult.H_PCT10).toLocaleString() : "N/A";
+          cardHighSalary.textContent = currentResult.H_PCT90 ? "$" + Math.round(currentResult.H_PCT90).toLocaleString() : "N/A";
+        }
+      }
+
+      toggleDropdown.addEventListener("change", function(){
+        currentModeResult = toggleDropdown.value;
+        updateSalaryCard(currentResult)
+      })
+
+      updateSalaryCard(currentResult); // populate card immediately on page load
+    </script>
 
     {%elif job_wages and dropdown_type == "state"%}
     <h1 class="job-title">{{job_wages[0].OCC_TITLE}}</h1>
@@ -92,10 +117,33 @@
       const wageData = {{ job_wages | tojson }};
 
       const dropdown = document.getElementById("state-dropdown");
+      const dropdownSalary = document.getElementById("annual-hourly-option");
       const wageQuestion = document.getElementById("wage-question");
       const avgSalary = document.getElementById("avg-salary");
       const lowSalary = document.getElementById("low-salary");
       const highSalary = document.getElementById("high-salary");
+
+      let activeMode = "annual";
+      let activeMatch = null;
+
+      // Updates the wage card based on the current mode (annual/hourly)
+      // Called when a state is selected from the dropdown and when the toggle changes
+      function updateSalaryCard(match){
+        activeMatch = match;
+
+        if(activeMode === "annual"){
+
+          avgSalary.textContent = match.A_MEAN ? "$" + Math.round(match.A_MEAN).toLocaleString() : "N/A";
+          lowSalary.textContent = match.A_PCT10 ? "$" + Math.round(match.A_PCT10).toLocaleString() : "N/A";
+          highSalary.textContent = match.A_PCT90 ? "$" + Math.round(match.A_PCT90).toLocaleString() : "N/A";
+
+        } else {
+          avgSalary.textContent = match.H_MEAN ? "$" + Math.round(match.H_MEAN).toLocaleString() : "N/A";
+          lowSalary.textContent = match.H_PCT10 ? "$" + Math.round(match.H_PCT10).toLocaleString() : "N/A";
+          highSalary.textContent = match.H_PCT90 ? "$" + Math.round(match.H_PCT90).toLocaleString() : "N/A";
+
+          }
+      }
 
       // Build one <option> per state
       wageData.forEach(function(wage) {
@@ -112,13 +160,20 @@
       return w.AREA_TITLE === selected;
       });
 
+      //if state matches update the text for the occupation name, question and execute function
       if (match) {
       wageQuestion.textContent = "How much do " + match.OCC_TITLE + " make in " + match.AREA_TITLE + "?";
-      avgSalary.textContent = match.A_MEAN ? "$" + Math.round(match.A_MEAN).toLocaleString() : "N/A";
-      lowSalary.textContent = match.A_PCT10 ? "$" + Math.round(match.A_PCT10).toLocaleString() : "N/A";
-      highSalary.textContent = match.A_PCT90 ? "$" + Math.round(match.A_PCT90).toLocaleString() : "N/A";
+      updateSalaryCard(match);
         }
       });
+
+      // When user switches between annual/hourly, update currentMode and re-render the card IF a state is already selected
+      dropdownSalary.addEventListener("change", function(){
+        activeMode = dropdownSalary.value;
+        if(activeMatch){
+          updateSalaryCard(activeMatch);
+        }
+      })
     </script>
 
     {%elif job_wages and dropdown_type == "occupation"%}
@@ -166,6 +221,8 @@
       let currentMode = "annual";
       let currentMatch = null;
 
+      // Updates the wage card based on the current mode (annual/hourly)
+      // Called when an occupation is selected from the dropdown and when the toggle changes
       function updateSalaryCard(match){
         currentMatch = match;
 
