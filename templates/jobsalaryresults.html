@@ -27,23 +27,27 @@
       How much do {{job_wage.OCC_TITLE}} make in {{job_wage.AREA_TITLE}}?
     </p>
 
-    <select id="annual-hourly-option">
-      <option value="annual">Annually</option>
-      <option value="hourly">Hourly</option>
-    </select>
-
     <div class="wage-values-card">
-      <div class="wage-stat">
-        <p>Average base salary</p>
-        <h2 id="avg-salary">-</h2>
+      <div class="wage-stats">
+        <div class="wage-stat">
+          <p>Average base salary</p>
+          <h2 id="avg-salary">-</h2>
+        </div>
+        <div class="wage-stat">
+          <p>Low</p>
+          <h2 id="low-salary">-</h2>
+        </div>
+        <div class="wage-stat">
+          <p>High</p>
+          <h2 id="high-salary">-</h2>
+        </div>
       </div>
-      <div class="wage-stat">
-        <p>Low</p>
-        <h2 id="low-salary">-</h2>
-      </div>
-      <div class="wage-stat">
-        <p>High</p>
-        <h2 id="high-salary">-</h2>
+
+      <div class="wage-controls">
+        <select id="annual-hourly-option">
+          <option value="annual">Annually</option>
+          <option value="hourly">Hourly</option>
+        </select>
       </div>
     </div>
 
@@ -87,27 +91,30 @@
       Select a state to see salaries for {{job_wages[0].OCC_TITLE}}
     </p>
 
-    <select id="state-dropdown">
-      <option value="">Select a state</option>
-    </select>
-
-    <select id="annual-hourly-option">
-      <option value="annual">Annually</option>
-      <option value="hourly">Hourly</option>
-    </select>
-
     <div class="wage-values-card">
-      <div class="wage-stat">
-        <p>Average base salary</p>
-        <h2 id="avg-salary">—</h2>
+      <div class="wage-stats">
+        <div class="wage-stat">
+          <p>Average base salary</p>
+          <h2 id="avg-salary">—</h2>
+        </div>
+        <div class="wage-stat">
+          <p>Low</p>
+          <h2 id="low-salary">—</h2>
+        </div>
+        <div class="wage-stat">
+          <p>High</p>
+          <h2 id="high-salary">—</h2>
+        </div>
       </div>
-      <div class="wage-stat">
-        <p>Low</p>
-        <h2 id="low-salary">—</h2>
-      </div>
-      <div class="wage-stat">
-        <p>High</p>
-        <h2 id="high-salary">—</h2>
+      <div class="wage-controls">
+        <select id="state-dropdown">
+          <option value="">Select a state</option>
+        </select>
+
+        <select id="annual-hourly-option">
+          <option value="annual">Annually</option>
+          <option value="hourly">Hourly</option>
+        </select>
       </div>
     </div>
 
@@ -182,29 +189,34 @@
       Select an occupation to see salaries in {{job_wages[0].AREA_TITLE}}
     </p>
 
-    <select id="occupation-dropdown">
-      <option value="">Select an occupation</option>
-    </select>
-
-    <select id="annual-hourly-option">
-      <option value="annual">Annually</option>
-      <option value="hourly">Hourly</option>
-    </select>
-
     <div class="wage-values-card">
-      <div class="wage-stat">
-        <p>Average base salary</p>
-        <h2 id="avg-salary">—</h2>
+      <div class="wage-stats">
+        <div class="wage-stat">
+          <p>Average base salary</p>
+          <h2 id="avg-salary">—</h2>
+        </div>
+        <div class="wage-stat">
+          <p>Low</p>
+          <h2 id="low-salary">—</h2>
+        </div>
+        <div class="wage-stat">
+          <p>High</p>
+          <h2 id="high-salary">—</h2>
+        </div>
       </div>
-      <div class="wage-stat">
-        <p>Low</p>
-        <h2 id="low-salary">—</h2>
-      </div>
-      <div class="wage-stat">
-        <p>High</p>
-        <h2 id="high-salary">—</h2>
+
+      <div class="wage-controls">
+        <select id="occupation-dropdown">
+          <option value="">Select an occupation</option>
+        </select>
+
+        <select id="annual-hourly-option">
+          <option value="annual">Annually</option>
+          <option value="hourly">Hourly</option>
+        </select>
       </div>
     </div>
+
     <script>
       //Case #3
       //Jinja embeds the Python list as a JSON array — JS can now read it

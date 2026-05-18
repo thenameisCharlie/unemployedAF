@@ -276,3 +276,29 @@ nav a + a {
   color: #b13333;
   font-weight: bold;
 }
+
+/*Job Salary Results*/
+.wage-values-card {
+  display: flex; /* Turns this container into a flex parent, making all direct children (cards) flex items it can control */
+  flex-direction: column; /* stacks the children one above the other */
+  border: 1px solid #000000;
+  border-radius: 10px;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.wage-stats {
+  display: flex; /* Turns this container into a flex parent, making all direct children (cards) flex items it can control */
+}
+
+.wage-stat {
+  display: flex; /* Turns this container into a flex parent, making all direct children (cards) flex items it can control */
+  flex-direction: column; /* stacks the children one above the other */
+  flex: 1; /* Tells each element to grow equally and fill all remaining space */
+}
+
+.wage-stat h2,
+.wage-stat p {
+  margin: 0; /* removes default browser spacing on text elements inside the card */
+}
