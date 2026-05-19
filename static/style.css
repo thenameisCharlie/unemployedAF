@@ -296,6 +296,7 @@ nav a + a {
   display: flex; /* Turns this container into a flex parent, making all direct children (cards) flex items it can control */
   flex-direction: column; /* stacks the children one above the other */
   flex: 1; /* Tells each element to grow equally and fill all remaining space */
+  text-align: center;
 }
 
 .wage-stat h2,
