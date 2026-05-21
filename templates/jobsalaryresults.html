@@ -22,32 +22,34 @@
 
   <body>
     {%include "components/navbar.html"%}{%if job_wage%}
-    <h1 class="job-title">{{job_wage.OCC_TITLE}}</h1>
-    <p class="job-wage-question">
-      How much do {{job_wage.OCC_TITLE}} make in {{job_wage.AREA_TITLE}}?
-    </p>
+    <div class="page-container">
+      <h1 class="job-title">{{job_wage.OCC_TITLE}}</h1>
+      <p class="job-wage-question">
+        How much do {{job_wage.OCC_TITLE}} make in {{job_wage.AREA_TITLE}}?
+      </p>
 
-    <div class="wage-values-card">
-      <div class="wage-stats">
-        <div class="wage-stat">
-          <p>Average base salary</p>
-          <h2 id="avg-salary">-</h2>
+      <div class="wage-values-card">
+        <div class="wage-stats">
+          <div class="wage-stat">
+            <p>Average base salary</p>
+            <h2 id="avg-salary">-</h2>
+          </div>
+          <div class="wage-stat">
+            <p>Low</p>
+            <h2 id="low-salary">-</h2>
+          </div>
+          <div class="wage-stat">
+            <p>High</p>
+            <h2 id="high-salary">-</h2>
+          </div>
         </div>
-        <div class="wage-stat">
-          <p>Low</p>
-          <h2 id="low-salary">-</h2>
-        </div>
-        <div class="wage-stat">
-          <p>High</p>
-          <h2 id="high-salary">-</h2>
-        </div>
-      </div>
 
-      <div class="wage-controls">
-        <select id="annual-hourly-option">
-          <option value="annual">Annually</option>
-          <option value="hourly">Hourly</option>
-        </select>
+        <div class="wage-controls">
+          <select id="annual-hourly-option">
+            <option value="annual">Pay per: Year</option>
+            <option value="hourly">Pay per: Hourly</option>
+          </select>
+        </div>
       </div>
     </div>
 
@@ -86,35 +88,37 @@
     </script>
 
     {%elif job_wages and dropdown_type == "state"%}
-    <h1 class="job-title">{{job_wages[0].OCC_TITLE}}</h1>
-    <p id="wage-question">
-      Select a state to see salaries for {{job_wages[0].OCC_TITLE}}
-    </p>
+    <div class="page-container">
+      <h1 class="job-title">{{job_wages[0].OCC_TITLE}}</h1>
+      <p id="wage-question">
+        Select a state to see salaries for {{job_wages[0].OCC_TITLE}}
+      </p>
 
-    <div class="wage-values-card">
-      <div class="wage-stats">
-        <div class="wage-stat">
-          <p>Average base salary</p>
-          <h2 id="avg-salary">—</h2>
+      <div class="wage-values-card">
+        <div class="wage-stats">
+          <div class="wage-stat">
+            <p>Average base salary</p>
+            <h2 id="avg-salary">—</h2>
+          </div>
+          <div class="wage-stat">
+            <p>Low</p>
+            <h2 id="low-salary">—</h2>
+          </div>
+          <div class="wage-stat">
+            <p>High</p>
+            <h2 id="high-salary">—</h2>
+          </div>
         </div>
-        <div class="wage-stat">
-          <p>Low</p>
-          <h2 id="low-salary">—</h2>
-        </div>
-        <div class="wage-stat">
-          <p>High</p>
-          <h2 id="high-salary">—</h2>
-        </div>
-      </div>
-      <div class="wage-controls">
-        <select id="state-dropdown">
-          <option value="">Select a state</option>
-        </select>
+        <div class="wage-controls">
+          <select id="state-dropdown">
+            <option value="">Select a state</option>
+          </select>
 
-        <select id="annual-hourly-option">
-          <option value="annual">Annually</option>
-          <option value="hourly">Hourly</option>
-        </select>
+          <select id="annual-hourly-option">
+            <option value="annual">Pay per: Year</option>
+            <option value="hourly">Pay per: Hourly</option>
+          </select>
+        </div>
       </div>
     </div>
 
@@ -184,36 +188,38 @@
     </script>
 
     {%elif job_wages and dropdown_type == "occupation"%}
-    <h1 id="job-title">{{job_title}}</h1>
-    <p id="occupation-question">
-      Select an occupation to see salaries in {{job_wages[0].AREA_TITLE}}
-    </p>
+    <div class="page-container">
+      <h1 id="job-title">{{job_title}}</h1>
+      <p id="occupation-question">
+        Select an occupation to see salaries in {{job_wages[0].AREA_TITLE}}
+      </p>
 
-    <div class="wage-values-card">
-      <div class="wage-stats">
-        <div class="wage-stat">
-          <p>Average base salary</p>
-          <h2 id="avg-salary">—</h2>
+      <div class="wage-values-card">
+        <div class="wage-stats">
+          <div class="wage-stat">
+            <p>Average base salary</p>
+            <h2 id="avg-salary">—</h2>
+          </div>
+          <div class="wage-stat">
+            <p>Low</p>
+            <h2 id="low-salary">—</h2>
+          </div>
+          <div class="wage-stat">
+            <p>High</p>
+            <h2 id="high-salary">—</h2>
+          </div>
         </div>
-        <div class="wage-stat">
-          <p>Low</p>
-          <h2 id="low-salary">—</h2>
-        </div>
-        <div class="wage-stat">
-          <p>High</p>
-          <h2 id="high-salary">—</h2>
-        </div>
-      </div>
 
-      <div class="wage-controls">
-        <select id="occupation-dropdown">
-          <option value="">Select an occupation</option>
-        </select>
+        <div class="wage-controls">
+          <select id="occupation-dropdown">
+            <option value="">Select an occupation</option>
+          </select>
 
-        <select id="annual-hourly-option">
-          <option value="annual">Annually</option>
-          <option value="hourly">Hourly</option>
-        </select>
+          <select id="annual-hourly-option">
+            <option value="annual">Pay per: Year</option>
+            <option value="hourly">Pay per: Hourly</option>
+          </select>
+        </div>
       </div>
     </div>
 

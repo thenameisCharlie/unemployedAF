@@ -278,25 +278,67 @@ nav a + a {
 }
 
 /*Job Salary Results*/
+.page-container {
+}
+
+.job-title {
+  text-align: center;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.job-wage-question {
+  text-align: center;
+  color: #a9a9a9;
+}
+
 .wage-values-card {
   display: flex; /* Turns this container into a flex parent, making all direct children (cards) flex items it can control */
   flex-direction: column; /* stacks the children one above the other */
   border: 1px solid #000000;
   border-radius: 10px;
-  max-width: 500px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 2rem;
+  background-color: #3d3d3d;
 }
 
 .wage-stats {
-  display: flex; /* Turns this container into a flex parent, making all direct children (cards) flex items it can control */
+  display: flex; /* Turns this container into a flex parent, making all direct children (divs) flex items it can control */
 }
 
 .wage-stat {
   display: flex; /* Turns this container into a flex parent, making all direct children (cards) flex items it can control */
   flex-direction: column; /* stacks the children one above the other */
   flex: 1; /* Tells each element to grow equally and fill all remaining space */
-  text-align: center;
+  text-align: center; /* Align the text to to the center of the page */
+}
+
+.wage-stat p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.wage-stat h2 {
+  font-size: 2.5rem;
+  color: #ffffff;
+}
+
+.wage-controls {
+  display: flex; /* makes wage-controls a flex parent so justify-content can control the alignment of its children (the select dropdown) */
+  justify-content: center; /* centers the select below the stats */
+  padding-top: 1rem;
+}
+
+.wage-stat + .wage-stat {
+  border-left: 1px solid #ffffff;
+  padding-left: 1rem; /* breathing room between divider and text */
+}
+
+#annual-hourly-option {
+  border: 2px solid #000000;
+  border-radius: 15px;
+  padding: 0.4rem 1.5rem;
+  font-size: 1rem;
 }
 
 .wage-stat h2,
