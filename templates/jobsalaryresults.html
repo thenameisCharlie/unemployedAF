@@ -21,7 +21,31 @@
   </head>
 
   <body>
-    {%include "components/navbar.html"%}{%if job_wage%}
+    {%include "components/navbar.html"%}
+    <form
+      class="results-search-bar"
+      action="{{url_for('jobsalaryresults.job_salary_results')}}"
+      method="get"
+    >
+      <input
+        type="text"
+        id="job-salary-title"
+        name="job-salary-title"
+        value="{{ job_wage.OCC_TITLE }}"
+      />
+
+      <input
+        type="text"
+        id="job-salary-location"
+        name="job-salary-location"
+        value="{{ job_wage.AREA_TITLE }}"
+      />
+
+      <button type="submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
+    {%if job_wage%}
     <div class="page-container">
       <h1 class="job-title">{{job_wage.OCC_TITLE}}</h1>
       <p class="job-wage-question">
